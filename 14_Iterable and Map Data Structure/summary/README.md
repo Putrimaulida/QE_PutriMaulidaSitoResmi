@@ -1,0 +1,6 @@
+# Rangkuman Materi Iterable and Map Data Structure
+
+Berikut ini rangkuman materi yang telah dipelajari sebelumnya :
+1. Iterable memiliki beberapa method yaitu forEach, iterator, dan spliterator. Untuk menggunakan Iterable dapat menggunakan iterble tipe data dari sebuah variabel.
+2. Iterator merupakan class yang memanage iterasi dari sebuah iterble untuk mengelola data iterasi dan mengetahui data apa yang dapat di ambil dan bagaimana cara mengambilnya. List  merupakan interface yang menyediakan cara untuk menyimpan data secara linier dan kumpulan dari object atau data yang diletakkan dalam satu tempat yang sama. List merupakan turunan dari Interface collection. ArrayList adalah menyediakan penyimpanan data yang dinamik tidak terikat dengan kapasitas data yang disimpan oleh arraylist tersebut. LinkedList adalah srtruktur data yang menyimpan setiap elemennya saling terhubung dengan satu sama lain. Stack adalah data yang baru dimasukkan maka akan dikeluarkan terlebih dahulu. Selain itu ada Set, Hash Set, LinkedHahSet, Queue, dan Dequeue.
+3. Map merupakan struktur data yang ada di java yang dapat digunakan untuk menyimpan data-data di dalamnya. Method Map : HashMap, WeakHashMap, IdentityHasMap, LinkedHasMap, EnumHashMap
