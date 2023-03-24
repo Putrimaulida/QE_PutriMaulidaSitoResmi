@@ -1,0 +1,6 @@
+# Rangkuman Materi Pengenalan RESTful API
+
+Berikut ini rangkuman materi yang telah dipelajari sebelumnya :
+1. API sendiri merupakan suatu penghubung antar satu aplikasi dengan aplikasi yang lain. Fungsinya untuk mempercepat proses development dan mempermudah developer dalam bertukar data. Sedangkan Rest API memiliki pengertian yaitu, standart arsitektur yang sering dikembangkan dalam pembuatan website. Pada Rest biasanya menggunakan HTTP dalam protokol komunikasi data. 
+2. Terdapat 4 method dalam HTTP, yaitu GET(membaca data), PUT(mengganti data), POST(membuat data baru), dan DELETE(menghapus data). Ada beberapa HTTP Response Code yaitu, 200(request yang di kirim success), 201(request yang dikirim success dan resource nya berhasil di buat (post dan put)), 400(data tidak sesuai atau salah dalam format(post atau put)), 404(resource yang di inginkan tidak ditemukan), 401(tidak melakukan autentikasi terlebih dahulu sebelum melakukan request), 405(HTTP nya tidak support atau salah), dan 500(terdapat kesalahan pada server).
+3. API Testing di bagi menjadi 3 macam yaitu, functionality, load test, dan security
