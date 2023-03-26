@@ -1,0 +1,1 @@
+Berikut Hasil Tugas From Manual to Automation Testing : https://docs.google.com/document/d/1_nB-y-bbbjyuweuOnYBlXoy9AkWYmLP3/edit?usp=sharing&ouid=111515337446224324388&rtpof=true&sd=true
