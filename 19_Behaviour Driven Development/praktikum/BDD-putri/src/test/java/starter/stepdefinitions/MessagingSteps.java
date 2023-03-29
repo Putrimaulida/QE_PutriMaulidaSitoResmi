@@ -24,8 +24,13 @@ public class MessagingSteps {
         messaging.iWriteAMessage();
     }
 
-    @Then("I click send button")
+    @And("I click send button")
     public void iClickSendButton() {
         messaging.iClickSendButton();
+    }
+
+    @Then("I have successfully send the message")
+    public void iHaveSuccessfullySendTheMessage() {
+        messaging.iHaveSuccessfullySendTheMessage();
     }
 }

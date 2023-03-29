@@ -19,4 +19,8 @@ public class Messaging {
     public void iClickSendButton(){
         System.out.println("I click send button");
     }
+    @Step("I have successfully send the message")
+    public void iHaveSuccessfullySendTheMessage(){
+        System.out.println("I have successfully send the message");
+    }
 }

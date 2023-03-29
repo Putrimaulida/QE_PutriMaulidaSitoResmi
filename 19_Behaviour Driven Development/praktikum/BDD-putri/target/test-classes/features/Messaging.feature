@@ -8,4 +8,5 @@ Feature: Messaging
     When I click pen button
     And I enter name or multiple names
     And I write a message
-    Then I click send button
+    And I click send button
+    Then I have successfully send the message
