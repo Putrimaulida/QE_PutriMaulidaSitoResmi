@@ -1,0 +1,11 @@
+starter\stepdefinitions\AccountSteps.class
+starter\stepdefinitions\MessagingSteps.class
+starter\login\Login.class
+starter\stepdefinitions\NetworkSteps.class
+starter\stepdefinitions\LoginSteps.class
+starter\main\Messaging.class
+starter\stepdefinitions\UpdateProfileSteps.class
+starter\main\UpdateProfile.class
+starter\CucumberTestSuite.class
+starter\main\Network.class
+starter\main\Account.class
