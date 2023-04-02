@@ -1,4 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"User","GET ALL - As admin I can get all data details","SUCCESS","2023-04-02T23:54:01.668+07:00[Asia/Bangkok]","0.0","6.64"
-"User","POST - As admin I have be able to create new user","SUCCESS","2023-04-02T23:54:08.382+07:00[Asia/Bangkok]","0.0","1.16"
-"User","INVALID POST - As an admin I can't create a new user","SUCCESS","2023-04-02T23:54:12.685+07:00[Asia/Bangkok]","0.0","1.98"
