@@ -1,0 +1,11 @@
+starter\user\Post.class
+starter\CucumberTestSuite.class
+starter\user\InvalidDelete.class
+starter\user\GetId.class
+starter\stepdefinitions\UserSteps.class
+starter\user\Put.class
+starter\user\InvalidGetAll.class
+starter\user\InvalidPost.class
+starter\user\Delete.class
+starter\user\GetAll.class
+starter\user\InvalidPut.class

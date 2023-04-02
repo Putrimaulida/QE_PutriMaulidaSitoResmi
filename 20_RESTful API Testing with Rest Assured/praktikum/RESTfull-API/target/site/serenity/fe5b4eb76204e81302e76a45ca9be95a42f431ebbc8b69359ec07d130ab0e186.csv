@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User","GET ID - As admin I have be able to get id detail user","SUCCESS","2023-04-02T23:54:09.638+07:00[Asia/Bangkok]","0.0","0.29"
+"User","PUT - As admin I have be able to update existing user","SUCCESS","2023-04-02T23:54:09.95+07:00[Asia/Bangkok]","0.0","0.92"
+"User","INVALID GET ALL - As an admin I can't get all data details","SUCCESS","2023-04-02T23:54:12.214+07:00[Asia/Bangkok]","0.0","0.37"
+"User","INVALID PUT - As an admin I can't update an existing user","SUCCESS","2023-04-02T23:54:14.685+07:00[Asia/Bangkok]","0.0","0.77"
