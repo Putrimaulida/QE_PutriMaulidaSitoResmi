@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>test.automation</groupId>
-    <artifactId>web-automation-alta</artifactId>
+    <artifactId>web-automation-saucedemo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <serenity.version>3.6.21</serenity.version>
+        <serenity.version>3.6.12</serenity.version>
         <tags></tags>
         <webdriver.base.url></webdriver.base.url>
     </properties>
