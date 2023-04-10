@@ -1,0 +1,15 @@
+# Praktikum Fundamental Perfomance Testing
+
+### 1. Jelaskan jenis-jenis dari performance testing.
+
+a. Performance test, adalah integration dan usability test yang menentukan apakah system or subsystem dapat memenuhi kriteria kinerja berbasis waktu seperti response time atau throughput. Response time menentukan batas waktu maksimum yang diijinkan dari respon software untuk query dan update. Throughput menentukan jumlah minimum query dan transaksi yang harus diproses per menit atau per jam. <br>
+
+b.	Load Testing, jenis tes ini akan dilakukan dengan menentukan target load. Biasanya digunakan untuk persiapan menghadapi sebuah event musiman yang trafiknya bertambah seiring waktu. Contohnya sistem kita kan melakukan penjualan mudik lebaran. Tentunya semakin mendekati waktu lebaran, maka ekspektasinya sistem akan menerima trafik yang lebih banyak. Jadi, dengan melakukan load testing kita akan mengetahui apakah sistem kita sanggup handle trafik sesuai ekspektasi kita. Load testing biasanya dilakukan dengan scalability testing juga, yaitu menaikkan load perlahan - lahan pada setiap skenarionya, kemudian memonitor penggunaan resourcenya apakah ada perbedaan yang signifikan atau tidak. Contohnya: penggunaan CPU dan memory atau melihat bagaimana behaviour sistem ketika scale up atau scale down apakah telat atau terlalu cepat melakukan scaling. <br>
+
+c.	Stress Testing, adalah pengujian yang biasanya dilakukan dalam membuat sebuah website, dimana stress testing dilakukan untuk mengetahui sekuat apa server website kita menampung visitor dalam website tersebut, dengan cara melakukan hit dummy ke website menggunakan tools. <br>
+
+d.	Usability test, adalah test untuk menentukan apakah method, class, subsistem, atau sistem telah memenuhi persyaratan pengguna. Oleh karena banyaknya tipe persyaratan sistem baik yang fungsional maupun non-fungsional, maka banyak tipe dari usability test yang harus dilakukan di waktu yang berbeda. Umumnya usability test mengevaluasi persyaratan fungsional dan kualitas dari user interface. User berinteraksi dengan sistem untuk menentukan apakah fungsi telah seperti yang diharapkan dan apakah user interface membuat sistem dapat mudah digunakan. Pengujian ini sering dilakukan untuk mendapatkan feedback yang cepat dalam meningkatkan interface dan mengoreksi kesalahan dalam komponen perangkat lunak.<br>
+
+e.	Unit testing, adalah proses metode pengujian individual, class, atau komponen sebelum mereka terintegrasi dengan perangkat lunak lainnya. Tujuan dari unit testing adalah untuk mengidentifikasi dan memperbaiki kesalahan sebanyak mungkin sebelum modul – modul digabungkan menjadi unit perangkat lunak yang lebih besar, seperti program, class dan subsistem. Kesalahan menjadi lebih sulit dan mahal untuk ditemukan dan diperbaiki ketika banyak unit telah digabungkan. Unit testing memerlukan implementasi dari driver dan/atau stub. Stub adalah class atau method dummy yang dapat dipanggil namun biasanya tidak melakukan apapun kecuali mengembalikan tipe yang diperlukan.
+
+
