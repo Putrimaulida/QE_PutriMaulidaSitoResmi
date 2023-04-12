@@ -1,0 +1,31 @@
+-------------------------------------------------------------------------------
+Test set: starter.CucumberTestSuite
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 9.152 s <<< FAILURE! - in starter.CucumberTestSuite
+Login.As user I have be able to success login  Time elapsed: 0.675 s  <<< ERROR!
+io.cucumber.junit.UndefinedStepException: 
+The step 'I am on the login page' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("I am on the login page")
+public void i_am_on_the_login_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I enter my email and password correctly")
+public void i_enter_my_email_and_password_correctly() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("I click login button")
+public void i_click_login_button() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("I am on the home page")
+public void i_am_on_the_home_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+
