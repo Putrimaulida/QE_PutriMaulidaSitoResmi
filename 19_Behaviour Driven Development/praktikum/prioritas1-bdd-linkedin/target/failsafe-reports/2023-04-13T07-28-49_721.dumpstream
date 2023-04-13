@@ -1,0 +1,4 @@
+# Created at 2023-04-13T07:28:50.778
+Boot Manifest-JAR contains absolute paths in classpath 'E:\SEMESTER VI\KAMPUS MERDEKA\qe_putri-maulida-sito-resmi\19_Behaviour Driven Development\praktikum\prioritas1-bdd-linkedin\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+

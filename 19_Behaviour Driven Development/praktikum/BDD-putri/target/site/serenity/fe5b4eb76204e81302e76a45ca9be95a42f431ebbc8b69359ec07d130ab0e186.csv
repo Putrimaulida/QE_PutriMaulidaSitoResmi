@@ -1,6 +1,0 @@
-"Story","Title","Result","Date","Stability","Duration (s)"
-"Account","As user I have be able to settings my account","SUCCESS","2023-04-12T09:12:20.034+07:00[Asia/Bangkok]","0.0","0.84"
-"Login","As user I have be able to success login","SUCCESS","2023-04-12T09:12:20.911+07:00[Asia/Bangkok]","0.0","0.06"
-"Messaging","As user I have be able to create new message","SUCCESS","2023-04-12T09:12:20.997+07:00[Asia/Bangkok]","0.0","0.09"
-"Network","As user I have be able to find my connection","SUCCESS","2023-04-12T09:12:21.118+07:00[Asia/Bangkok]","0.0","0.15"
-"UpdateProfile","As user I have be able to update my profile","SUCCESS","2023-04-12T09:12:21.307+07:00[Asia/Bangkok]","0.0","0.1"
