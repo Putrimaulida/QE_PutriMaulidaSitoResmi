@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Login","As user I have be able to success login","SUCCESS","2023-04-13T07:21:51.834+07:00[Asia/Bangkok]","0.0","0.76"
+"Payment","As user I have be able to success checkout product","SUCCESS","2023-04-13T07:21:52.664+07:00[Asia/Bangkok]","0.0","0.28"
+"Select Product","As user I have be able to success add product","SUCCESS","2023-04-13T07:21:53.015+07:00[Asia/Bangkok]","0.0","0.12"

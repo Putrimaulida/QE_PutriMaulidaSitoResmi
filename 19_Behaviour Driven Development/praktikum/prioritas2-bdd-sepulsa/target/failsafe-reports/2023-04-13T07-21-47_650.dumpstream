@@ -1,0 +1,4 @@
+# Created at 2023-04-13T07:21:48.646
+Boot Manifest-JAR contains absolute paths in classpath 'E:\SEMESTER VI\ALTA\prioritas2-bdd-sepulsa\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+
