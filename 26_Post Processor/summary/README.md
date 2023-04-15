@@ -1,0 +1,3 @@
+# Rangkuman Mater Post Processor JMeter
+
+1. Post processor adalah bagian dari test plan yang merupakan sebuah aksi yang berjalan saat proses telah dilakukan, proses ini sendiri adalah proses request ke sebuah alamat web. Proses yang dilakukan pada post processor kali ini pada umumnya adalah untuk mengesktrak value yang didapatkan dari hasil mengakses sebuah alamat web seperti data-data pada JSON, session atau pada bagian respons lainnya. Satu post processor di jmeter yang digunakan salah satunya adalah JSON Extractor. 
