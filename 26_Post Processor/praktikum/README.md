@@ -1,1 +1,0 @@
-Berikut Link Google Document pengerjaan hasil screenshot post processor : https://docs.google.com/document/d/1zqjpwiHb8L-9JFoNA4bI_y_ALmaJG_Q5HAU7VVxjD_4/edit?usp=sharing
