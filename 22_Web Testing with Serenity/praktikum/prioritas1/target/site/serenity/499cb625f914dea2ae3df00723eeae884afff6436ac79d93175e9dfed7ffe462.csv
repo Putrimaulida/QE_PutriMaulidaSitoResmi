@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"As a user","as user i want to input valid to then i can see success login","SUCCESS","2023-04-08T10:55:54.931+07:00[Asia/Bangkok]","0.0","5.5"
+"As a user","as user i want to input invalid username then get error message","SUCCESS","2023-04-08T10:56:04.642+07:00[Asia/Bangkok]","0.0","4.62"
+"As a user","as user i can add products to my cart","SUCCESS","2023-04-08T10:56:13.036+07:00[Asia/Bangkok]","0.0","3.39"
+"As a user","as user i can not see number products my cart","SUCCESS","2023-04-08T10:56:17.43+07:00[Asia/Bangkok]","0.0","7.13"
+"As a user","as user i can checkout my cart","SUCCESS","2023-04-08T10:56:25.624+07:00[Asia/Bangkok]","0.0","7.76"
+"As a user","as user i can not checkout my cart","SUCCESS","2023-04-08T10:56:34.387+07:00[Asia/Bangkok]","0.0","7.45"

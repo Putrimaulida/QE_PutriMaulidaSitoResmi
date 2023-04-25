@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Features</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+
+
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#scenario-results").DataTable({
+                "order": [[0, "asc",], [3, "asc",]],
+                "language": {
+                    searchPlaceholder: "Filter",
+                    search: ""
+                },
+                columnDefs: [
+                    {type: 'time-elapsed-dhms', targets: 4}
+                ]
+            })
+            $("#manual-scenario-results").DataTable({
+                "order": [[0, "asc",], [1, "asc",]],
+                "language": {
+                    searchPlaceholder: "Filter",
+                    search: ""
+                },
+            })
+
+            $('.example-table table').DataTable({
+                searching: false,
+                ordering: false,
+                paging: false,
+                info: false
+            });
+
+            $('.example-table-in-scenario table').DataTable({
+                searching: false,
+                ordering: false,
+                paging: false,
+                info: false
+            });
+
+            $('#evidence-table').DataTable(
+                {
+                    searching: false,
+                    ordering: false,
+                    paging: false,
+                    info: false
+                }
+            );
+
+
+            $(".scenario-docs .card-body table").wrap("<div class='table-responsive'></div>");
+
+            $("#requirements-tabs").tabs();
+            $("#test-tabs").tabs();
+
+            var requirementsTree = [{"text":"As a user","type":"feature","href":"d0c6792b174d6a9ebc57c6382b2d2d640fe4e5f15900fc0d146b872172e24c2d.html","nodes":[],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027bi bi-check-circle-fill success-icon \u0027 title\u003d\u0027SUCCESS\u0027\u003e\u003c/i\u003e\u003c/a\u003e","\u003cspan class\u003d\u0027feature-count\u0027\u003e6 scenarios\u003c/span\u003e"]}];
+
+            $('#tree').treeview({
+                data: requirementsTree,
+                enableLinks: true,
+                levels: 10,
+                showTags: true,
+                expandIcon: "bi bi-journal-plus",
+                collapseIcon: "bi bi-journal-minus",
+                emptyIcon: "bi bi-journal"
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".scenario-docs > div > p").html(function () {
+                var text = $(this).text().trim().split(" ");
+                var first = text.shift();
+                return (text.length > 0 ? "<strong>" + first + "</strong> " : first) + text.join(" ");
+            });
+        });
+    </script>
+</head>
+
+
+<body class="results-page">
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+            <a href='index.html'>Home</a> > <a href="capabilities.html">Requirements</a>
+
+                > <a href="dd94dbad08ba62f34cc50c83c8df0add65d9f815a656028c3781be92b35fe1ec.html">Web</a>
+
+
+                    > <span class="truncate-40">As A User</span>
+
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li >
+            <a href="index.html"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="bi bi-chat-text"></i> Capabilities</a>
+        </li>
+        <li class="active">
+            <a href="#"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 08-04-2023 10:55</span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+    <div id="beforetable"></div>
+    <div id="results-dashboard">
+        <div class="table">
+            <div class=row">
+                <div class="col-sm-12">
+                    <div>
+                        <div clas="table">
+                            <div class="row">
+
+                                    <div class="col-sm-12">
+                                        <span>
+                                            <h2><i class="bi bi-book"></i> Feature: As A User</h2>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="requirementNarrativeTitle">
+                                i have be able to success login<br />
+so that i can see products page
+                            </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <!-- Requirements result tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#specs"><i class="bi bi-journal-text"></i> Specifications</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#results"><i class="bi bi-speedometer"></i> Test Results</a>
+                            </li>
+                        </ul>
+
+                        <!-- Specifications and Results tabs -->
+                        <div class="card border">
+                            <div class="tab-content" id="pills-tabContent">
+                                <div id="specs" class="tab-pane fade in active">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <h3>Feature Coverage By Scenario</h3>
+
+                                                <!-- REQUIREMENTS PIE CHART -->
+                                                    <div class="chart-container" style="position: relative; width:30vw">
+                                                        <canvas id="requirementChart" width="300" height="300"></canvas>
+                                                    </div>
+
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <!--- TOC --->
+                                                <div id="toc">
+                                                    <h3>Overview</h3>
+                                                    <table class="table" id="toc-table">
+                                                                    <tr>
+                                                                        <td style="width:95%;" class="toc-title">
+                                                                            <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#455bf7cad58cf1e32e840081a20f367949c07c3078a5533039c09aa8a87edc63"
+                                                                                       title="View scenario details">
+                                                                                        <i class="bi bi-chat-dots"></i> Scenario: as user i want to input valid to then i can see success login
+                                                                                    </a>
+                                                                                </span>
+                                                                        </td>
+                                                                        <td>
+
+                                                                        </td>
+                                                                        <td style="width:5%;">
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td class="icons-bar">
+                                                                                        <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                           href="22138ec41dc97a05312a04be78f84517f55cd0da92838403c468de779d1dc282.html"
+                                                                                           title="View test results">
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                            </a>
+
+
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="22138ec41dc97a05312a04be78f84517f55cd0da92838403c468de779d1dc282.html"
+                                                                                               title="View test results">
+                                                                                                <i class="bi bi-eyeglasses"></i>
+                                                                                            </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:95%;" class="toc-title">
+                                                                            <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#f1a32489969f236a4705ed716841767d224e378d77781d9c1daf89fe9c9c66ec"
+                                                                                       title="View scenario details">
+                                                                                        <i class="bi bi-chat-dots"></i> Scenario: as user i want to input invalid username then get error message
+                                                                                    </a>
+                                                                                </span>
+                                                                        </td>
+                                                                        <td>
+
+                                                                        </td>
+                                                                        <td style="width:5%;">
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td class="icons-bar">
+                                                                                        <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                           href="dfec59bf6ab57257972fb43ebc854e658d977adac8c2da7ef87707dc77b65228.html"
+                                                                                           title="View test results">
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                            </a>
+
+
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="dfec59bf6ab57257972fb43ebc854e658d977adac8c2da7ef87707dc77b65228.html"
+                                                                                               title="View test results">
+                                                                                                <i class="bi bi-eyeglasses"></i>
+                                                                                            </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:95%;" class="toc-title">
+                                                                            <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#f6014b74523a03d803a060f3c84dd33181328517c279d68f07739c748e64b2c6"
+                                                                                       title="View scenario details">
+                                                                                        <i class="bi bi-chat-dots"></i> Scenario: as user i can add products to my cart
+                                                                                    </a>
+                                                                                </span>
+                                                                        </td>
+                                                                        <td>
+
+                                                                        </td>
+                                                                        <td style="width:5%;">
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td class="icons-bar">
+                                                                                        <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                           href="0396c468b75f67903154a3e6b9660beb8056c9102fff7890ebd4122e278f0bfa.html"
+                                                                                           title="View test results">
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                            </a>
+
+
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="0396c468b75f67903154a3e6b9660beb8056c9102fff7890ebd4122e278f0bfa.html"
+                                                                                               title="View test results">
+                                                                                                <i class="bi bi-eyeglasses"></i>
+                                                                                            </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:95%;" class="toc-title">
+                                                                            <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#f51996c57f43235de7d9cd31e5fcd9b4ab60ecf787b088f4c241693c6cc68cd5"
+                                                                                       title="View scenario details">
+                                                                                        <i class="bi bi-chat-dots"></i> Scenario: as user i can not see number products my cart
+                                                                                    </a>
+                                                                                </span>
+                                                                        </td>
+                                                                        <td>
+
+                                                                        </td>
+                                                                        <td style="width:5%;">
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td class="icons-bar">
+                                                                                        <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                           href="eac703c55f3c5e575af3c4c9265fb0620c8e79abe570861380e644a170e7714a.html"
+                                                                                           title="View test results">
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                            </a>
+
+
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="eac703c55f3c5e575af3c4c9265fb0620c8e79abe570861380e644a170e7714a.html"
+                                                                                               title="View test results">
+                                                                                                <i class="bi bi-eyeglasses"></i>
+                                                                                            </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:95%;" class="toc-title">
+                                                                            <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#54ecd2f228821943c3ece127b9d4ea177e01d0c2364f5319648cd83883c266ae"
+                                                                                       title="View scenario details">
+                                                                                        <i class="bi bi-chat-dots"></i> Scenario: as user i can checkout my cart
+                                                                                    </a>
+                                                                                </span>
+                                                                        </td>
+                                                                        <td>
+
+                                                                        </td>
+                                                                        <td style="width:5%;">
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td class="icons-bar">
+                                                                                        <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                           href="9cb2faaa0cf3cab9e57d9e92a71b4d34b4578532653c4f5b76d2e5267cb725c4.html"
+                                                                                           title="View test results">
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                            </a>
+
+
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="9cb2faaa0cf3cab9e57d9e92a71b4d34b4578532653c4f5b76d2e5267cb725c4.html"
+                                                                                               title="View test results">
+                                                                                                <i class="bi bi-eyeglasses"></i>
+                                                                                            </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width:95%;" class="toc-title">
+                                                                            <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#c5d91e87c8e71b6b72813feb0b9ad4f1828f9df5ce69b48c3a866a35e6ac83d5"
+                                                                                       title="View scenario details">
+                                                                                        <i class="bi bi-chat-dots"></i> Scenario: as user i can not checkout my cart
+                                                                                    </a>
+                                                                                </span>
+                                                                        </td>
+                                                                        <td>
+
+                                                                        </td>
+                                                                        <td style="width:5%;">
+                                                                            <table>
+                                                                                <tr>
+                                                                                    <td class="icons-bar">
+                                                                                        <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                           href="1640be7f5b8f7536e4180d4cc76f53e7a325afac207a6184e3fc3de6fdeb524f.html"
+                                                                                           title="View test results">
+                                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                                            </a>
+
+
+                                                                                            <a style="margin-left:0.5em;padding-right: 1.5em;"
+                                                                                               href="1640be7f5b8f7536e4180d4cc76f53e7a325afac207a6184e3fc3de6fdeb524f.html"
+                                                                                               title="View test results">
+                                                                                                <i class="bi bi-eyeglasses"></i>
+                                                                                            </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                    </table>
+                                                </div>
+                                                <!--- END OF TOC --->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3>Scenarios</h3>
+
+                                                    <a name="76538245-131d-4b62-8342-c4f488da7c1e"></a>
+                                                    <p class="rule-tags inline-tag">
+                                                    </p>
+
+
+                                                        <div class="scenario-docs card" id="455bf7cad58cf1e32e840081a20f367949c07c3078a5533039c09aa8a87edc63">
+                                                            <div class="scenario-docs card-header success"
+                                                                 style="min-height:1.5em;">
+                                                                <div>
+                                                                        <span class="scenario-heading">
+                                                                            <a href="22138ec41dc97a05312a04be78f84517f55cd0da92838403c468de779d1dc282.html"
+                                                                               title="View test results">Scenario: as user i want to input valid to then i can see success login</a>
+                                                                        </span>
+
+                                                                        <span class="example-tags inline-tag">
+                                                                                <span class="badge tag-badge"
+                                                                                      style="background:default;">
+                                                                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                                                                    <a class="tagLink"
+                                                                                       style="background:default;"
+                                                                                       href="9b7b5e3ad8c08e971ec701aecb9df1fe66599272ea59a39d85b7f559067839e3.html">PositiveLogin (tag)</a>
+                                                                                </span>
+                                                                        </span>
+
+                                                                    <span class="scenario-result-icon">
+                                                                    
+
+                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        </span>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="scenario-docs card-body">
+                                                                    <p>Given user on login page</p>
+                                                                    <p>When user input valid username</p>
+                                                                    <p>And user input valid password</p>
+                                                                    <p>And user click login button</p>
+                                                                    <p>Then user on products page</p>
+                                                                <div class="examples">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="scenario-docs card" id="f1a32489969f236a4705ed716841767d224e378d77781d9c1daf89fe9c9c66ec">
+                                                            <div class="scenario-docs card-header success"
+                                                                 style="min-height:1.5em;">
+                                                                <div>
+                                                                        <span class="scenario-heading">
+                                                                            <a href="dfec59bf6ab57257972fb43ebc854e658d977adac8c2da7ef87707dc77b65228.html"
+                                                                               title="View test results">Scenario: as user i want to input invalid username then get error message</a>
+                                                                        </span>
+
+                                                                        <span class="example-tags inline-tag">
+                                                                                <span class="badge tag-badge"
+                                                                                      style="background:default;">
+                                                                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                                                                    <a class="tagLink"
+                                                                                       style="background:default;"
+                                                                                       href="6aedea53e4bfbd6e561008b0514db2aa5e8e5fe5f60453bcdad99a3da2a521b5.html">NegativeLogin (tag)</a>
+                                                                                </span>
+                                                                        </span>
+
+                                                                    <span class="scenario-result-icon">
+                                                                    
+
+                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        </span>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="scenario-docs card-body">
+                                                                    <p>Given user on login page</p>
+                                                                    <p>When user input invalid username</p>
+                                                                    <p>And user input valid password</p>
+                                                                    <p>And user click login button</p>
+                                                                    <p>Then user see error message &quot;Username and password do not match any user in this service&quot;</p>
+                                                                <div class="examples">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="scenario-docs card" id="f6014b74523a03d803a060f3c84dd33181328517c279d68f07739c748e64b2c6">
+                                                            <div class="scenario-docs card-header success"
+                                                                 style="min-height:1.5em;">
+                                                                <div>
+                                                                        <span class="scenario-heading">
+                                                                            <a href="0396c468b75f67903154a3e6b9660beb8056c9102fff7890ebd4122e278f0bfa.html"
+                                                                               title="View test results">Scenario: as user i can add products to my cart</a>
+                                                                        </span>
+
+                                                                        <span class="example-tags inline-tag">
+                                                                                <span class="badge tag-badge"
+                                                                                      style="background:default;">
+                                                                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                                                                    <a class="tagLink"
+                                                                                       style="background:default;"
+                                                                                       href="bcf85cc1d533e20f32966cbfb574dcd96a9294eadf65caf77fb5503c5351c29f.html">PositiveAllItem (tag)</a>
+                                                                                </span>
+                                                                        </span>
+
+                                                                    <span class="scenario-result-icon">
+                                                                    
+
+                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        </span>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="scenario-docs card-body">
+                                                                    <p>Given user on login page</p>
+                                                                    <p>When user input valid username</p>
+                                                                    <p>And user input valid password</p>
+                                                                    <p>And user click login button</p>
+                                                                    <p>And user on products page</p>
+                                                                    <p>And user click add to cart button in one product</p>
+                                                                    <p>Then user can see the number of products in the cart symbol</p>
+                                                                <div class="examples">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="scenario-docs card" id="f51996c57f43235de7d9cd31e5fcd9b4ab60ecf787b088f4c241693c6cc68cd5">
+                                                            <div class="scenario-docs card-header success"
+                                                                 style="min-height:1.5em;">
+                                                                <div>
+                                                                        <span class="scenario-heading">
+                                                                            <a href="eac703c55f3c5e575af3c4c9265fb0620c8e79abe570861380e644a170e7714a.html"
+                                                                               title="View test results">Scenario: as user i can not see number products my cart</a>
+                                                                        </span>
+
+                                                                        <span class="example-tags inline-tag">
+                                                                                <span class="badge tag-badge"
+                                                                                      style="background:default;">
+                                                                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                                                                    <a class="tagLink"
+                                                                                       style="background:default;"
+                                                                                       href="995e8a7129be02ecee3b3309a44d5f34874dd9c5b4bc0a756de7a9b002e38f80.html">NegativeAllItem (tag)</a>
+                                                                                </span>
+                                                                        </span>
+
+                                                                    <span class="scenario-result-icon">
+                                                                    
+
+                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        </span>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="scenario-docs card-body">
+                                                                    <p>Given user on login page</p>
+                                                                    <p>When user input valid username</p>
+                                                                    <p>And user input valid password</p>
+                                                                    <p>And user click login button</p>
+                                                                    <p>And user on products page</p>
+                                                                    <p>And user click add to cart button in one product</p>
+                                                                    <p>And user click remove button</p>
+                                                                    <p>Then user can not see the number of products in the cart symbol</p>
+                                                                <div class="examples">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="scenario-docs card" id="54ecd2f228821943c3ece127b9d4ea177e01d0c2364f5319648cd83883c266ae">
+                                                            <div class="scenario-docs card-header success"
+                                                                 style="min-height:1.5em;">
+                                                                <div>
+                                                                        <span class="scenario-heading">
+                                                                            <a href="9cb2faaa0cf3cab9e57d9e92a71b4d34b4578532653c4f5b76d2e5267cb725c4.html"
+                                                                               title="View test results">Scenario: as user i can checkout my cart</a>
+                                                                        </span>
+
+                                                                        <span class="example-tags inline-tag">
+                                                                                <span class="badge tag-badge"
+                                                                                      style="background:default;">
+                                                                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                                                                    <a class="tagLink"
+                                                                                       style="background:default;"
+                                                                                       href="0ac26ce7a8d946e27ea917b395e182e6cd58682aa66ced9c2e578ea76c0ec361.html">PositiveOverviewCheckout (tag)</a>
+                                                                                </span>
+                                                                        </span>
+
+                                                                    <span class="scenario-result-icon">
+                                                                    
+
+                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        </span>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="scenario-docs card-body">
+                                                                    <p>Given user on login page</p>
+                                                                    <p>When user input valid username</p>
+                                                                    <p>And user input valid password</p>
+                                                                    <p>And user click login button</p>
+                                                                    <p>And user on products page</p>
+                                                                    <p>And user click add to cart button in one product</p>
+                                                                    <p>And user click the shopping cart</p>
+                                                                    <p>And user to the checkout page</p>
+                                                                    <p>And user click checkout button</p>
+                                                                    <p>And user to the personal data information page</p>
+                                                                    <p>And user fill first name field</p>
+                                                                    <p>And user fill last name field</p>
+                                                                    <p>And user fill postal code field</p>
+                                                                    <p>And user click continue button</p>
+                                                                    <p>And user on the overview checkout page</p>
+                                                                    <p>And user get the price total</p>
+                                                                    <p>And user click finish button</p>
+                                                                    <p>Then user successfully checkout in one &quot;Thank you for your order!&quot;</p>
+                                                                <div class="examples">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="scenario-docs card" id="c5d91e87c8e71b6b72813feb0b9ad4f1828f9df5ce69b48c3a866a35e6ac83d5">
+                                                            <div class="scenario-docs card-header success"
+                                                                 style="min-height:1.5em;">
+                                                                <div>
+                                                                        <span class="scenario-heading">
+                                                                            <a href="1640be7f5b8f7536e4180d4cc76f53e7a325afac207a6184e3fc3de6fdeb524f.html"
+                                                                               title="View test results">Scenario: as user i can not checkout my cart</a>
+                                                                        </span>
+
+                                                                        <span class="example-tags inline-tag">
+                                                                                <span class="badge tag-badge"
+                                                                                      style="background:default;">
+                                                                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                                                                    <a class="tagLink"
+                                                                                       style="background:default;"
+                                                                                       href="e3f85bdfdd54426209fe25608d544ef1c058f3759010744286977c81671a0770.html">NegativeOverviewCheckout (tag)</a>
+                                                                                </span>
+                                                                        </span>
+
+                                                                    <span class="scenario-result-icon">
+                                                                    
+
+                                                                            <a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                                                        </span>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="scenario-docs card-body">
+                                                                    <p>Given user on login page</p>
+                                                                    <p>When user input valid username</p>
+                                                                    <p>And user input valid password</p>
+                                                                    <p>And user click login button</p>
+                                                                    <p>And user on products page</p>
+                                                                    <p>And user click add to cart button in one product</p>
+                                                                    <p>And user click the shopping cart</p>
+                                                                    <p>And user to the checkout page</p>
+                                                                    <p>And user click checkout button</p>
+                                                                    <p>And user to the personal data information page</p>
+                                                                    <p>And user fill first name field</p>
+                                                                    <p>And user click continue button</p>
+                                                                    <p>Then user get an error message &quot;Error: Last Name is required&quot;</p>
+                                                                <div class="examples">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="results" class="tab-pane fade">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <h3>Feature Coverage By Scenario</h3>
+                                                <!-- TEST RESULT PIE CHART -->
+                                                    <div class="chart-container" style="position: relative; width:30vw">
+                                                        <canvas id="resultChart" width="300" height="300"></canvas>
+                                                    </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h4><i class="bi bi-check-square"></i> Test Outcomes</h4>
+                                                <!-- Severity bar chart -->
+                                                <div class="chart-container" style="position: relative; width:30vw">
+                                                    <canvas id="severityChart" width="300" height="300"></canvas>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <h4><i class="bi bi-graph-up"></i> Test Performance</h4>
+
+                                                <!-- Duration bar chart -->
+                                                <div class="chart-container" style="position: relative; width:30vw">
+                                                    <canvas id="durationChart" width="300" height="300"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+    <div>
+        <h3><i class="bi bi-speedometer2"></i> Key Statistics</h3>
+        <div>
+            <table class="table table-striped table-hover">
+                <tbody>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-card-checklist"></i> Number of Scenarios
+                    </td>
+                    <td>6</td>
+                    <td>
+                        <i class="bi bi-stopwatch"></i> Total
+                        Duration
+                    </td>
+                    <td>46s</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-caret-right"></i> Total Number of Test Cases
+                    </td>
+                    <td>6</td>
+                    <td>
+                        <i class="bi bi-trophy"></i> Fastest Test
+                    </td>
+                    <td>3s</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-person"></i> Number of Manual Test Cases
+                    </td>
+                    <td>0</td>
+                    <td>
+                        <i class="bi bi-skip-start"></i> Slowest
+                        Test
+                    </td>
+                    <td>7s</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-flag-fill"></i> Tests Started
+                    </td>
+                    <td>Apr 08, 2023 10:55:54</td>
+                    <td>
+                        <i class="bi bi-stopwatch"></i> Average
+                        Execution Time
+                    </td>
+                    <td>5s</td>
+                </tr>
+                <tr scope="row">
+                    <td>
+                        <i class="bi bi-stop-circle"></i> Tests
+                        Finished
+                    </td>
+                    <td>Apr 08, 2023 10:56:41</td>
+                    <td>
+                        <i class="bi bi-stopwatch-fill"></i> Total
+                        Execution Time
+                    </td>
+                    <td>35s</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+                                                <h3><i class="bi bi-gear"></i> Automated Tests</h3>
+
+                                                    <table class="scenario-result-table table" id="scenario-results">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>feature</th>
+                                                            <th class="test-name-column">Scenario</th>
+                                                            <th>Context</th>
+                                                            <th>Steps</th>
+                                                            <th>Started</th>
+                                                            <th>Total Duration</th>
+                                                            <th>Result</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="9bb44c710a975453ad87b2b1393ec6347eb43d784287f68b9d5f38ba28911f24.html">As a user</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="22138ec41dc97a05312a04be78f84517f55cd0da92838403c468de779d1dc282.html">as user i want to input valid to then i can see success login</a>
+                                                                    </td>
+                                                                    <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-windows' title='Windows'></i></span><span style="display:none">Chrome,Windows</span> </td>
+                                                                    <td>5</td>
+                                                                    <td>10:55:54</td>
+                                                                    <td>5s 496ms</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="9bb44c710a975453ad87b2b1393ec6347eb43d784287f68b9d5f38ba28911f24.html">As a user</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="dfec59bf6ab57257972fb43ebc854e658d977adac8c2da7ef87707dc77b65228.html">as user i want to input invalid username then get error message</a>
+                                                                    </td>
+                                                                    <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-windows' title='Windows'></i></span><span style="display:none">Chrome,Windows</span> </td>
+                                                                    <td>5</td>
+                                                                    <td>10:56:04</td>
+                                                                    <td>4s 618ms</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="9bb44c710a975453ad87b2b1393ec6347eb43d784287f68b9d5f38ba28911f24.html">As a user</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="0396c468b75f67903154a3e6b9660beb8056c9102fff7890ebd4122e278f0bfa.html">as user i can add products to my cart</a>
+                                                                    </td>
+                                                                    <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-windows' title='Windows'></i></span><span style="display:none">Chrome,Windows</span> </td>
+                                                                    <td>7</td>
+                                                                    <td>10:56:13</td>
+                                                                    <td>3s 391ms</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="9bb44c710a975453ad87b2b1393ec6347eb43d784287f68b9d5f38ba28911f24.html">As a user</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="eac703c55f3c5e575af3c4c9265fb0620c8e79abe570861380e644a170e7714a.html">as user i can not see number products my cart</a>
+                                                                    </td>
+                                                                    <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-windows' title='Windows'></i></span><span style="display:none">Chrome,Windows</span> </td>
+                                                                    <td>8</td>
+                                                                    <td>10:56:17</td>
+                                                                    <td>7s 126ms</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="9bb44c710a975453ad87b2b1393ec6347eb43d784287f68b9d5f38ba28911f24.html">As a user</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="9cb2faaa0cf3cab9e57d9e92a71b4d34b4578532653c4f5b76d2e5267cb725c4.html">as user i can checkout my cart</a>
+                                                                    </td>
+                                                                    <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-windows' title='Windows'></i></span><span style="display:none">Chrome,Windows</span> </td>
+                                                                    <td>18</td>
+                                                                    <td>10:56:25</td>
+                                                                    <td>7s 761ms</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result SUCCESS">
+                                                                    <td>
+                                                                            <a href="9bb44c710a975453ad87b2b1393ec6347eb43d784287f68b9d5f38ba28911f24.html">As a user</a>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="1640be7f5b8f7536e4180d4cc76f53e7a325afac207a6184e3fc3de6fdeb524f.html">as user i can not checkout my cart</a>
+                                                                    </td>
+                                                                    <td><span class='context-icon'><i class='bi bi-browser-chrome' title='Chrome'></i> <i class='bi bi-windows' title='Windows'></i></span><span style="display:none">Chrome,Windows</span> </td>
+                                                                    <td>13</td>
+                                                                    <td>10:56:34</td>
+                                                                    <td>7s 451ms</td>
+                                                                    <td><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a> <span
+                                                                                style="display:none">SUCCESS</span>
+                                                                    </td>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3><i class="bi bi-hand-index-thumb"></i> Manual Tests</h3>
+
+                                                    No manual tests were recorded
+
+                                            </div>
+                                        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Tags</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                    <a href="6aedea53e4bfbd6e561008b0514db2aa5e8e5fe5f60453bcdad99a3da2a521b5.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Negative Login&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="bcf85cc1d533e20f32966cbfb574dcd96a9294eadf65caf77fb5503c5351c29f.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Positive All Item&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="e3f85bdfdd54426209fe25608d544ef1c058f3759010744286977c81671a0770.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Negative Overview Checkout&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="0ac26ce7a8d946e27ea917b395e182e6cd58682aa66ced9c2e578ea76c0ec361.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Positive Overview Checkout&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="9b7b5e3ad8c08e971ec701aecb9df1fe66599272ea59a39d85b7f559067839e3.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Positive Login&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                                    <a href="995e8a7129be02ecee3b3309a44d5f34874dd9c5b4bc0a756de7a9b002e38f80.html">
+                                    <span class="tag-badge badge" style="background-color:#b0cf73; margin:1em;padding:4px;">
+                                        <i class="bi bi-tag-fill"></i> Negative All Item&nbsp;&nbsp;&nbsp;1
+                                    </span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <span class="version">Serenity BDD version 3.6.12</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Chart data -->
+    <!-- PIE CHART -->
+    <script>
+
+        // The results pie chart
+        const outcomeChartCtx = document.getElementById('resultChart');
+
+        // Options define for display value on top of bars
+        const outcomeDetailsReports = [
+            { title: 'Passing Test Cases', link: "256da1ee56330e323ca7789c4e3cd1f33e1f93e9b2e9d1e1bc98bc570ccad540.html" },
+            { title: 'Pending Test Cases', link: "d144e89571c83d7929d2aee073f08ef406c33b1dea201a361a016d6af1d90a68.html" },
+            { title: 'Ignored Test Cases', link: "f27e2f6a2281eb749bc0c945beacfc00914eb7d0b871cb363ab036c8c6940a1d.html" },
+            { title: 'Skipped Test Cases', link: "4eaa1161f516dd17927ef3fd1f7f99846f48c7dd8a2a04eb07d27fb4fd59f423.html" },
+            { title: 'Aborted Test Cases',  link: "f83fe9674a0c953ec05ac6fe38ec57bc4ed624ceb4038165ff32fe6ae5aa0830.html"},
+            { title: 'Failed Test Cases', link: "be0c4beb28e1d7bb9471f55527d274c7333e2f6fea2f487134dbe70246db3ad1.html"  },
+            { title: 'Broken Test Cases', link: "9226b3da04e1da5dc6585117ddde11f51286aa27432a023e2ec16ad742705a00.html"    },
+            { title: 'Compromised Test Cases',  link: "57647f3f8e012e638f8ef3826138d96fd08acbcc5fad34e3afd0a46610204ea2.html" },
+        ]
+        const outcomeData = {
+            labels: ['Passing Test Cases', 'Pending Test Cases', 'Ignored Test Cases', 'Skipped Test Cases', 'Aborted Test Cases', 'Failed Test Cases', 'Broken Test Cases', 'Compromised Test Cases','Undefined Test Cases'],
+            datasets: [{
+                label: 'Test Results',
+                fill: false,
+                data: [{meta: 'Passing tests', value: 6}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
+                backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
+                borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                borderWidth: 1,
+            }]
+        }
+        const outcomeOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        if (percentage === '0%' || percentage === 'NaN%') {
+                            return '';
+                        } else {
+                            return percentage;
+                        }
+                    },
+                },
+            }
+        }
+
+        const outcomeChart = new Chart(outcomeChartCtx, {
+            type: 'doughnut',
+            data: outcomeData,
+            options: outcomeOptions,
+            plugins: [
+                {
+                    id: 'text',
+                    beforeDraw: function (chart, a, b) {
+                        var width = chart.width,
+                            height = chart.height,
+                            ctx = chart.ctx;
+
+                        ctx.restore();
+                        var fontSize = (height / 200).toFixed(1);
+                        ctx.font = fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+
+                        var text = "100%"
+                        textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
+                        textY = (height / 2) - 40;
+
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }]
+        });
+
+        function clickHandler(click) {
+            const points = outcomeChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(outcomeDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        outcomeChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END PIE CHART -->
+    <!-- PIE CHART -->
+    <script>
+
+        // The results pie chart
+        const requirementsChartCtx = document.getElementById('requirementChart');
+
+        // Options define for display value on top of bars
+        const requirementsOutcomeDetailsReports = [
+            { title: 'Passing Test Cases', link: "256da1ee56330e323ca7789c4e3cd1f33e1f93e9b2e9d1e1bc98bc570ccad540.html" },
+            { title: 'Pending Test Cases', link: "d144e89571c83d7929d2aee073f08ef406c33b1dea201a361a016d6af1d90a68.html" },
+            { title: 'Ignored Test Cases', link: "f27e2f6a2281eb749bc0c945beacfc00914eb7d0b871cb363ab036c8c6940a1d.html" },
+            { title: 'Skipped Test Cases', link: "4eaa1161f516dd17927ef3fd1f7f99846f48c7dd8a2a04eb07d27fb4fd59f423.html" },
+            { title: 'Aborted Test Cases',  link: "f83fe9674a0c953ec05ac6fe38ec57bc4ed624ceb4038165ff32fe6ae5aa0830.html"},
+            { title: 'Failed Test Cases', link: "be0c4beb28e1d7bb9471f55527d274c7333e2f6fea2f487134dbe70246db3ad1.html"  },
+            { title: 'Broken Test Cases', link: "9226b3da04e1da5dc6585117ddde11f51286aa27432a023e2ec16ad742705a00.html"    },
+            { title: 'Compromised Test Cases',  link: "57647f3f8e012e638f8ef3826138d96fd08acbcc5fad34e3afd0a46610204ea2.html" },
+            { title: 'Undefined Test Cases',  link: "" },
+        ]
+        const requirementsOutcomeData = {
+            labels: ['Passing Test Cases', 'Pending Test Cases', 'Ignored Test Cases', 'Skipped Test Cases', 'Aborted Test Cases', 'Failed Test Cases', 'Broken Test Cases', 'Compromised Test Cases','Undefined Test Cases'],
+            datasets: [{
+                label: 'Feature Coverage',
+                fill: false,
+                data: [{meta: 'Passing tests', value: 6}, {meta: 'Pending tests', value: 0}, {meta: 'Ignored tests', value: 0}, {meta: 'Skipped tests', value: 0}, {meta: 'Aborted tests', value: 0}, {meta: 'Failing tests', value: 0}, {meta: 'Broken tests', value: 0}, {meta: 'Compromised tests', value: 0}],
+                backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
+                borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                borderWidth: 1,
+            }]
+        }
+        const requirementsOutcomeOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        let sum = 0;
+                        let dataArr = ctx.chart.data.datasets[0].data;
+                        dataArr.map(data => {
+                            sum += data;
+                        });
+                        let percentage = (value * 100 / sum).toFixed(0) + "%";
+                        if (percentage === '0%' || percentage === 'NaN%') {
+                            return '';
+                        } else {
+                            return percentage;
+                        }
+                    },
+                },
+            }
+        }
+
+        const requirementsChart = new Chart(requirementsChartCtx, {
+            type: 'doughnut',
+            data: requirementsOutcomeData,
+            options: requirementsOutcomeOptions,
+            plugins: [
+                {
+                    id: 'text',
+                    beforeDraw: function (chart, a, b) {
+                        var width = chart.width,
+                            height = chart.height,
+                            ctx = chart.ctx;
+
+                        ctx.restore();
+                        var fontSize = (height / 200).toFixed(1);
+                        ctx.font = fontSize + "em sans-serif";
+                        ctx.textBaseline = "middle";
+
+                        var text = "100%"
+                        textX = 10 + Math.round((width - ctx.measureText(text).width) / 2);
+                        textY = (height / 2) - 40;
+
+                        ctx.fillText(text, textX, textY);
+                        ctx.save();
+                    }
+                }]
+        });
+
+        function reqsClickHandler(click) {
+            const points = requirementsChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length && requirementsOutcomeDetailsReports[firstPoint.index].link) {
+                const firstPoint = points[0];
+                window.open(requirementsOutcomeDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        requirementsChartCtx.onclick = reqsClickHandler;
+    </script>
+    <!-- END PIE CHART -->
+
+    <!-- SUMMARY BAR CHART -->
+    <script>
+
+        // The Severity bar chart
+        const severityChartCtx = document.getElementById('severityChart');
+
+        // Options define for display value on top of bars
+
+        const severityDetailsReports = [
+            { title: 'Passing Scenarios', link: "256da1ee56330e323ca7789c4e3cd1f33e1f93e9b2e9d1e1bc98bc570ccad540.html" },
+            { title: 'Pending Scenarios', link: "d144e89571c83d7929d2aee073f08ef406c33b1dea201a361a016d6af1d90a68.html" },
+            { title: 'Ignored Scenarios', link: "f27e2f6a2281eb749bc0c945beacfc00914eb7d0b871cb363ab036c8c6940a1d.html" },
+            { title: 'Skipped Scenarios', link: "4eaa1161f516dd17927ef3fd1f7f99846f48c7dd8a2a04eb07d27fb4fd59f423.html" },
+            { title: 'Aborted Scenarios',  link: "f83fe9674a0c953ec05ac6fe38ec57bc4ed624ceb4038165ff32fe6ae5aa0830.html"},
+            { title: 'Failed Scenarios', link: "be0c4beb28e1d7bb9471f55527d274c7333e2f6fea2f487134dbe70246db3ad1.html"  },
+            { title: 'Broken Scenarios', link: "9226b3da04e1da5dc6585117ddde11f51286aa27432a023e2ec16ad742705a00.html"    },
+            { title: 'Compromised Scenarios',  link: "57647f3f8e012e638f8ef3826138d96fd08acbcc5fad34e3afd0a46610204ea2.html" },
+        ]
+        const severityData = {
+            labels: ['Passing', 'Pending', 'Ignored', 'Skipped', 'Aborted', 'Failed', 'Broken', 'Compromised'],
+            datasets: [
+                {
+                    label: 'Automated',
+                    data: [6,0,0,0,0,0,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.5)','rgba(165, 199, 238, 0.5)','rgba(168, 168, 168, 0.5)','rgba(238, 224, 152, 0.75)','rgba(255, 153, 102, 0.5)','rgba(255, 22, 49, 0.5)','rgba(255, 97, 8, 0.5)','rgba(255, 104, 255, 0.5)','rgba(83, 50, 168, 0.5)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Manual',
+                    data: [0,0,0,0,0,0,0,0],
+                    backgroundColor: ['rgba(153,204,51,0.25)','rgba(165, 199, 238, 0.25)','rgba(168, 168, 168, 0.25)','rgba(238, 224, 152, 0.375)','rgba(255, 153, 102, 0.25)','rgba(255, 22, 49, 0.25)','rgba(255, 97, 8, 0.25)','rgba(255, 104, 255, 0.25)','rgba(83, 50, 168, 0.25)'],
+                    borderColor: ['rgba(153,204,51,1)','rgba(165, 199, 238, 1)','rgba(168, 168, 168, 1)','rgba(238, 224, 152, 1)','rgba(255, 153, 102, 1)','rgba(255, 22, 49, 1)','rgba(255, 97, 8, 1)','rgba(255, 104, 255, 1)','rgba(83, 50, 168, 1)'],
+                    borderWidth: 1
+                },
+
+            ]
+        }
+        const severityOptions = {
+            responsive: true,
+            skipNull: true,
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true,
+                }
+            },
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value === 0) {
+                            return '';
+                        } else {
+                            return value;
+                        }
+                    },
+                }
+            }
+        }
+        const severityChart = new Chart(severityChartCtx, {
+            type: 'bar',
+            data: severityData,
+            options: severityOptions
+        });
+
+        function clickHandler(click) {
+            const points = severityChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(severityDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+        severityChartCtx.onclick = clickHandler;
+    </script>
+    <!-- END SUMMARY CHART -->
+
+    <!-- DURATION CHART -->
+    <script>
+
+        // Options define for display value on top of bars
+        const durationDetailsReports = [
+                {title: "Under 1 second", link: "80d66d4dcfbe4e1b6ad46e0af762d6eea0ccde708bfc682f9f6408c0c9882c1a.html"},
+                {title: "1 to 10 seconds", link: "a7b3df680fe6bebd092534cea2e16570c9c35fbd0b08649c15837d3470a27106.html"},
+                {title: "10 to 30 seconds", link: "06afefa58e47b7b2fd9bc4f76c19decd8fba0f650159f068e8e02bd2227615cb.html"},
+                {title: "30 to 60 seconds", link: "29595bed40451ac57a7b778fee0514f0e9c365f49ce9938df5d008a1640b4e56.html"},
+                {title: "1 to 2 minutes", link: "429ed1885d7b2f82b70c45859c3b7701da1dd35c06a80420e31d067826aa6f85.html"},
+                {title: "2 to 5 minutes", link: "9efbe89ff2f8ec2dd78b4d5893d01919d51b7475d775a0ca36747186c4eb4ef4.html"},
+                {title: "5 to 10 minutes", link: "c1c009d0b8b70b04051de33bf68ed744f321a5c2ba381ab35dc52f8a205f0977.html"},
+                {title: "10 minutes or over", link: "a2eded69ab18996f01a5705667e4d0ad02c2afc08e29310ce12a228a9cb5b600.html"},
+        ]
+        // The Severity bar chart
+        const durationChartCtx = document.getElementById('durationChart');
+
+        // Options define for display value on top of bars
+
+        const durationData = {
+            labels: ['Under 1 second','1 to 10 seconds','10 to 30 seconds','30 to 60 seconds','1 to 2 minutes','2 to 5 minutes','5 to 10 minutes','10 minutes or over'],
+            datasets: [{
+                label: 'Number of tests per duration',
+                fill: false,
+                data: ['0','6','0','0','0','0','0','0'],
+                backgroundColor: 'rgba(83, 146, 255,0.5)',
+                borderColor: 'rgba(83, 146, 255, 1)',
+            }]
+        }
+        const durationOptions = {
+            responsive: true,
+            plugins: {
+                // Change options for ALL labels of THIS CHART
+                datalabels: {
+                    color: '#444444',
+                    'font.weight': 'bold',
+                    formatter: (value, ctx) => {
+                        if (value > 0) {
+                            return value;
+                        } else {
+                            return '';
+                        }
+                    },
+                },
+                tooltip: {
+                    enabled: true,
+                    usePointStyle: true,
+                    callbacks: {
+                        label: (data) => {
+                            return data.parsed.y + ' tests'
+                        }
+                    },
+                },
+            },
+        }
+
+        const durationChart = new Chart(durationChartCtx, {
+            type: 'bar',
+            data: durationData,
+            options: durationOptions
+        });
+
+        function durationClickHandler(click) {
+            const points = durationChart.getElementsAtEventForMode(click, 'nearest', {intersect: true}, true);
+            if (points.length) {
+                const firstPoint = points[0];
+                window.open(durationDetailsReports[firstPoint.index].link, "_self")
+
+            }
+        }
+
+        durationChartCtx.onclick = durationClickHandler;
+    </script>
+    <!-- END DURATION CHART -->
+</body>
+</html>
