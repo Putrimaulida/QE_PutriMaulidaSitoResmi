@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>test.automation</groupId>
-    <artifactId>test-automation-mobile</artifactId>
+    <artifactId>mobile-testing</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

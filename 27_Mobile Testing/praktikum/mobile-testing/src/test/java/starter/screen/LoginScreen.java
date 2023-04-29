@@ -23,6 +23,9 @@ public class LoginScreen extends BasePageObject {
         return AppiumBy.id("snackbar_text");
     }
 
+    private By accountPage() {
+        return AppiumBy.xpath("/hierarchy/android.widget.FrameLayout");
+    }
     @Step
     public void onLoginPage() {
         Assert.assertTrue(waitUntilVisible(loginButton()).isDisplayed());
@@ -46,6 +49,11 @@ public class LoginScreen extends BasePageObject {
     @Step
     public String getErrorMessage() {
         return waitUntilVisible(errorMessage()).getText();
+    }
+
+    @Step
+    public void userOnTheAccountsPage() {
+        onType(accountPage());
     }
 
 }

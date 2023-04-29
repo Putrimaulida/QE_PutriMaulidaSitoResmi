@@ -18,12 +18,12 @@ public class LoginSteps {
 
     @When("user input valid username")
     public void userInputValidUsername() {
-        login.inputEmail("adi@gmail.com");
+        login.inputEmail("putri55@gmail.com");
     }
 
     @And("user input invalid password")
     public void userInputInvalidPassword() {
-        login.inputPassword("123123123");
+        login.inputPassword("putri54");
     }
 
     @Then("user see error message {string}")
@@ -34,5 +34,15 @@ public class LoginSteps {
     @And("user click login button")
     public void userClickLoginButton() {
         login.tapLoginButton();
+    }
+
+    @And("user input valid password")
+    public void userInputValidPassword() {
+        login.inputPassword("putri55");
+    }
+
+    @Then("user on the accounts page")
+    public void userOnTheAccountsPage() {
+        login.userOnTheAccountsPage();
     }
 }
