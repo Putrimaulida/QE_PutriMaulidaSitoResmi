@@ -20,11 +20,11 @@ public class AndroidDriverPool {
 
         caps.setCapability(AndroidMobileCapabilityType.PLATFORM_NAME, "Android");
 //        caps.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
-        caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+        caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
 //        caps.setCapability(MobileCapabilityType.NO_RESET, false);
         caps.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir") + File.separator + "app/app.apk");
 //        caps.setCapability(String.valueOf(Setting.WAIT_FOR_IDLE_TIMEOUT), 100);
-        caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.1");
+        caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.0");
 
         try {
             driver = new AndroidDriver(new URL(appiumUrl), caps);

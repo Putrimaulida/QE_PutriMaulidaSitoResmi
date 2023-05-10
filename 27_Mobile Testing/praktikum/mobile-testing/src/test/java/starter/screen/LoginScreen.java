@@ -24,8 +24,11 @@ public class LoginScreen extends BasePageObject {
     }
 
     private By accountPage() {
-        return AppiumBy.xpath("/hierarchy/android.widget.FrameLayout");
+        return AppiumBy.xpath("\t\n" +
+                "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout");
     }
+
+    // ======
     @Step
     public void onLoginPage() {
         Assert.assertTrue(waitUntilVisible(loginButton()).isDisplayed());
@@ -55,5 +58,4 @@ public class LoginScreen extends BasePageObject {
     public void userOnTheAccountsPage() {
         onType(accountPage());
     }
-
 }
