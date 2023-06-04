@@ -1,0 +1,4 @@
+# Created at 2023-06-04T16:11:21.027
+Boot Manifest-JAR contains absolute paths in classpath 'E:\SEMESTER VI\KAMPUS MERDEKA\qe_putri-maulida-sito-resmi\RESTfull-API\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+

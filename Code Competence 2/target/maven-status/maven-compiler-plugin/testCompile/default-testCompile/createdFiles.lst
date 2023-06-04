@@ -1,0 +1,13 @@
+starter\user\Product\GetAllCategories.class
+starter\user\Product\GetSingleProduct.class
+starter\user\Product\GetLimitProduct.class
+starter\stepdefinitions\Login\LoginSteps.class
+starter\stepdefinitions\Product\GetSingleProductSteps.class
+starter\stepdefinitions\Product\GetLimitSteps.class
+starter\CucumberTestSuite.class
+starter\stepdefinitions\Product\PostNewProductSteps.class
+starter\stepdefinitions\Product\GetAllProductSteps.class
+starter\stepdefinitions\Product\GetAllCategoriesSteps.class
+starter\user\Product\GetAllProduct.class
+starter\user\Product\PostNewProduct.class
+starter\user\Login\LoginPage.class

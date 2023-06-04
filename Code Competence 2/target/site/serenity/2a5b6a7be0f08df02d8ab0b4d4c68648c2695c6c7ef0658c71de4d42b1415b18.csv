@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User","Get a single product - As admin I can get one product data","SUCCESS","2023-06-04T16:11:38.88+07:00[Asia/Bangkok]","0.0","0.74"
+"User","Limit results - As admin I can get product limit","SUCCESS","2023-06-04T16:11:39.637+07:00[Asia/Bangkok]","0.0","0.7"
+"User","Get all categories - As admin I can get data of all categories","FAILURE","2023-06-04T16:11:40.358+07:00[Asia/Bangkok]","0.0","0.84"

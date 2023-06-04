@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: starter.CucumberTestSuite
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 27.686 s <<< FAILURE! - in starter.CucumberTestSuite
+User #2.Get all categories - As admin I can get data of all categories  Time elapsed: 0.936 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+Response body doesn't match expectation.
+Expected: "electronics"
+  Actual: {"id":1,"title":"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops","price":109.95,"description":"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday","category":"men's clothing","image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg","rating":{"rate":3.9,"count":120}}
+
+
+User #2.Add new product - As admin I can add new data  Time elapsed: 4.515 s  <<< FAILURE!
+java.lang.AssertionError: 
+1 expectation failed.
+JSON path title doesn't match.
+Expected: test product
+  Actual: null
+
+

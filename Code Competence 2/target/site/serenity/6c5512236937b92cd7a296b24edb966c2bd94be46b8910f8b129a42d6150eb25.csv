@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"User","POST - As admin I can login","SUCCESS","2023-06-04T16:11:23.96+07:00[Asia/Bangkok]","0.0","9.42"
+"User","INVALID POST - As admin I can't login","SUCCESS","2023-06-04T16:11:33.427+07:00[Asia/Bangkok]","0.0","4.23"
+"User","GET ALL - As admin I can get all data details","SUCCESS","2023-06-04T16:11:37.678+07:00[Asia/Bangkok]","0.0","1.16"
+"User","Add new product - As admin I can add new data","FAILURE","2023-06-04T16:11:41.301+07:00[Asia/Bangkok]","0.0","4.5"
